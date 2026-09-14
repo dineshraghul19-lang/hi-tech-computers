@@ -21,10 +21,12 @@ const About: React.FC = () => {
       <div className="container section pt-0">
         <div className="about-grid">
           <div className="about-image-wrapper">
-            {/* Placeholder for owner's photo */}
-            <div className="about-image-placeholder">
-              <span>Photo of Ganesan Subramanian</span>
-            </div>
+            <img 
+              src="/images/owner_photo.jpg" 
+              alt="Ganesan Subramanian" 
+              className="about-image"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.5rem' }}
+            />
           </div>
           
           <div className="about-content">
