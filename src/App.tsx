@@ -19,6 +19,7 @@ const Reviews = React.lazy(() => import('./pages/Reviews'));
 // Admin Pages
 const AdminLogin = React.lazy(() => import('./pages/admin/Login'));
 const AdminDashboard = React.lazy(() => import('./pages/admin/Dashboard'));
+const ManageServices = React.lazy(() => import('./pages/admin/ManageServices'));
 const ManagePortfolio = React.lazy(() => import('./pages/admin/ManagePortfolio'));
 const ManageReviews = React.lazy(() => import('./pages/admin/ManageReviews'));
 
@@ -47,7 +48,7 @@ const App: React.FC = () => {
                 <Route index element={<Navigate to="/admin/dashboard" replace />} />
                 <Route path="login" element={<AdminLogin />} />
                 <Route path="dashboard" element={<AdminDashboard />} />
-                <Route path="services" element={<div style={{ color: 'white' }}>Services Management (Coming Soon)</div>} />
+                <Route path="services" element={<ManageServices />} />
                 <Route path="portfolio" element={<ManagePortfolio />} />
                 <Route path="reviews" element={<ManageReviews />} />
               </Route>

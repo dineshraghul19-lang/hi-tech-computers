@@ -71,8 +71,8 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             description: s.description,
             category: s.category || 'Other',
             iconName: s.icon_name || 'Box',
-            ctaText: 'REQUEST SERVICE',
-            ctaAction: 'SERVICE'
+            ctaText: s.cta_text || 'REQUEST SERVICE',
+            ctaAction: s.cta_action || 'SERVICE'
           })) as Service[];
           
           setServices(mappedServices);
