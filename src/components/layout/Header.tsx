@@ -31,6 +31,7 @@ export const Header: React.FC = () => {
     { name: 'Our Work', path: '/work' },
     { name: 'Service Area', path: '/service-area' },
     { name: 'About', path: '/about' },
+    { name: 'Reviews', path: '/reviews' },
     { name: 'Contact', path: '/contact' },
   ];
 

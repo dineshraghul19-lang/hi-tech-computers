@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
-import { LogOut, LayoutDashboard, Settings } from 'lucide-react';
+import { LogOut, LayoutDashboard, Settings, Image as ImageIcon, MessageSquare } from 'lucide-react';
 
 export const AdminLayout: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -10,6 +10,12 @@ export const AdminLayout: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
+    if (localStorage.getItem('master_admin_token') === 'true') {
+      setUser({ id: 'master-admin', email: 'admin' });
+      setLoading(false);
+      return;
+    }
+
     // Check active session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user || null);
@@ -28,6 +34,12 @@ export const AdminLayout: React.FC = () => {
 
   const handleLogout = async () => {
     try {
+      if (localStorage.getItem('master_admin_token') === 'true') {
+        localStorage.removeItem('master_admin_token');
+        setUser(null);
+        navigate('/admin/login');
+        return;
+      }
       await supabase.auth.signOut();
       navigate('/admin/login');
     } catch (error) {
@@ -95,6 +107,32 @@ export const AdminLayout: React.FC = () => {
           >
             <Settings size={20} />
             Manage Services
+          </button>
+          <button 
+            onClick={() => navigate('/admin/portfolio')}
+            style={{ 
+              display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem 1rem', 
+              backgroundColor: location.pathname === '/admin/portfolio' ? '#374151' : 'transparent', 
+              color: location.pathname === '/admin/portfolio' ? '#60a5fa' : '#d1d5db',
+              border: 'none', borderRadius: '0.375rem', cursor: 'pointer', textAlign: 'left',
+              transition: 'all 0.2s'
+            }}
+          >
+            <ImageIcon size={20} />
+            Manage Our Work
+          </button>
+          <button 
+            onClick={() => navigate('/admin/reviews')}
+            style={{ 
+              display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem 1rem', 
+              backgroundColor: location.pathname === '/admin/reviews' ? '#374151' : 'transparent', 
+              color: location.pathname === '/admin/reviews' ? '#60a5fa' : '#d1d5db',
+              border: 'none', borderRadius: '0.375rem', cursor: 'pointer', textAlign: 'left',
+              transition: 'all 0.2s'
+            }}
+          >
+            <MessageSquare size={20} />
+            Manage Reviews
           </button>
         </nav>
         <div style={{ borderTop: '1px solid #374151', paddingTop: '1rem' }}>

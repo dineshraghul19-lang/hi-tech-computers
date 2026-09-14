@@ -14,10 +14,13 @@ const About = React.lazy(() => import('./pages/About'));
 const Contact = React.lazy(() => import('./pages/Contact'));
 const Quote = React.lazy(() => import('./pages/Quote'));
 const Visit = React.lazy(() => import('./pages/Visit'));
+const Reviews = React.lazy(() => import('./pages/Reviews'));
 
 // Admin Pages
 const AdminLogin = React.lazy(() => import('./pages/admin/Login'));
 const AdminDashboard = React.lazy(() => import('./pages/admin/Dashboard'));
+const ManagePortfolio = React.lazy(() => import('./pages/admin/ManagePortfolio'));
+const ManageReviews = React.lazy(() => import('./pages/admin/ManageReviews'));
 
 const App: React.FC = () => {
   return (
@@ -35,6 +38,7 @@ const App: React.FC = () => {
                 <Route path="contact" element={<Contact />} />
                 <Route path="quote" element={<Quote />} />
                 <Route path="visit" element={<Visit />} />
+                <Route path="reviews" element={<Reviews />} />
                 <Route path="*" element={<div style={{ padding: '8rem 2rem', textAlign: 'center', color: 'white' }}><h2>404 - Page Not Found</h2></div>} />
               </Route>
 
@@ -44,6 +48,8 @@ const App: React.FC = () => {
                 <Route path="login" element={<AdminLogin />} />
                 <Route path="dashboard" element={<AdminDashboard />} />
                 <Route path="services" element={<div style={{ color: 'white' }}>Services Management (Coming Soon)</div>} />
+                <Route path="portfolio" element={<ManagePortfolio />} />
+                <Route path="reviews" element={<ManageReviews />} />
               </Route>
             </Routes>
           </React.Suspense>
