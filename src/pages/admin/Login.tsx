@@ -16,7 +16,7 @@ const Login: React.FC = () => {
     setLoading(true);
 
     try {
-      if (email === 'admin' && password === 'admin') {
+      if (email === 'ganesansubramanian1969@gmail.com' && password === 'dineshganesh2026..') {
         localStorage.setItem('master_admin_token', 'true');
         navigate('/admin/dashboard');
         return;

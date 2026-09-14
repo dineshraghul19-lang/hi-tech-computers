@@ -11,7 +11,7 @@ export const AdminLayout: React.FC = () => {
 
   useEffect(() => {
     if (localStorage.getItem('master_admin_token') === 'true') {
-      setUser({ id: 'master-admin', email: 'admin' });
+      setUser({ id: 'master-admin', email: 'ganesansubramanian1969@gmail.com' });
       setLoading(false);
       return;
     }
