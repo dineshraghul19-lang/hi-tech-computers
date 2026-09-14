@@ -10,12 +10,6 @@ export const AdminLayout: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (localStorage.getItem('master_admin_token') === 'true') {
-      setUser({ id: 'master-admin', email: 'ganesansubramanian1969@gmail.com' });
-      setLoading(false);
-      return;
-    }
-
     // Check active session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user || null);
@@ -34,12 +28,6 @@ export const AdminLayout: React.FC = () => {
 
   const handleLogout = async () => {
     try {
-      if (localStorage.getItem('master_admin_token') === 'true') {
-        localStorage.removeItem('master_admin_token');
-        setUser(null);
-        navigate('/admin/login');
-        return;
-      }
       await supabase.auth.signOut();
       navigate('/admin/login');
     } catch (error) {
